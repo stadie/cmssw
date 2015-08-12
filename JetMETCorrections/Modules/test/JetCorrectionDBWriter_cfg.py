@@ -28,5 +28,4 @@ for algo in jetalgos:
     setattr(process,'dbWriter'+algo,writer)
     process.writeSequence += writer
 
-
 process.p = cms.Path(process.writeSequence)
