@@ -42,7 +42,7 @@ JetCorrectorDBWriter::JetCorrectorDBWriter(const edm::ParameterSet& pSet)
 // Begin Job
 void JetCorrectorDBWriter::beginJob()
 {
-  std::string path("CondFormats/JetMETObjects/data/");
+  std::string path("JECDatabase/textFiles/");
 
   JetCorrectorParametersCollection *payload = new JetCorrectorParametersCollection();
   std::cout << "Starting to import payload " << payloadTag << " from text files." << std::endl;
@@ -54,7 +54,7 @@ void JetCorrectorDBWriter::beginJob()
     append += "_";
     append += algo;
     append += ".txt"; 
-    inputTxtFile = path+era+append;
+    inputTxtFile = path+era+"/"+era+append;
     std::ifstream input( ("../../../"+inputTxtFile).c_str() );
     if ( input.good() ) {
       edm::FileInPath fip(inputTxtFile);
