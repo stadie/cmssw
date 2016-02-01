@@ -1,8 +1,9 @@
 import FWCore.ParameterSet.Config as cms
 
-filename = "Summer15_50nsV3_DATA_HS.db"
-era = "Summer15_50nsV3_DATA"
+filename = "Fall15_25nsV1_DATA_HS.db"
+era = "Fall15_25nsV1_DATA"
 jetalgos = ['AK4PFPuppi','AK4PF','AK4PFchs','AK8PFPuppi','AK8PF','AK8PFchs']
+#jetalgos = ['AK4PFchs']
 
 process = cms.Process('jecdb')
 process.load('CondCore.DBCommon.CondDBCommon_cfi')
