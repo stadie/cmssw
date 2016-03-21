@@ -219,9 +219,9 @@ TtSemiLepHypothesis::setCandidate(const edm::Handle<std::vector<pat::Jet> >& han
   std::string flavor = correctionLevel.substr(1+correctionLevel.find(":"));
   float corrFactor = 1.;
   if(flavor=="wMix")
-    corrFactor = 0.75*ptr->jecFactor(step, "uds") + 0.25*ptr->jecFactor(step, "charm");
+    corrFactor = 0.75*ptr->jecFactor(step, "uds",ptr->currentJECSet()) + 0.25*ptr->jecFactor(step, "charm",ptr->currentJECSet());
   else
-    corrFactor = ptr->jecFactor(step, flavor);
+    corrFactor = ptr->jecFactor(step, flavor,ptr->currentJECSet());
   clone = new reco::ShallowClonePtrCandidate( ptr, ptr->charge(), ptr->p4()*corrFactor, ptr->vertex() );
 }
 

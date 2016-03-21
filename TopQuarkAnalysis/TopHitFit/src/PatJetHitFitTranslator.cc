@@ -130,13 +130,12 @@ JetTranslatorBase<pat::Jet>::operator()(const pat::Jet& jet,
 
     if (type == hitfit::hadb_label || type == hitfit::lepb_label || type == hitfit::higgs_label) {
         jet_resolution = bResolution_.GetResolution(jet_eta);
-        pat::Jet bPartonCorrJet(jet.correctedJet(jetCorrectionLevel_,"BOTTOM"));
+        pat::Jet bPartonCorrJet(jet.correctedJet(jetCorrectionLevel_,"BOTTOM",jet.currentJECSet()));
         bPartonCorrJet.scaleEnergy(jesB_);
         p = Fourvec(bPartonCorrJet.px(),bPartonCorrJet.py(),bPartonCorrJet.pz(),bPartonCorrJet.energy());
-
     } else {
         jet_resolution = udscResolution_.GetResolution(jet_eta);
-        pat::Jet udsPartonCorrJet(jet.correctedJet(jetCorrectionLevel_,"UDS"));
+        pat::Jet udsPartonCorrJet(jet.correctedJet(jetCorrectionLevel_,"UDS",jet.currentJECSet()));
         udsPartonCorrJet.scaleEnergy(jes_);
         p = Fourvec(udsPartonCorrJet.px(),udsPartonCorrJet.py(),udsPartonCorrJet.pz(),udsPartonCorrJet.energy());
     }
